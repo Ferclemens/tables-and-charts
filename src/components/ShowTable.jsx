@@ -5,7 +5,8 @@ import { useTable } from "react-table";
 
 function ShowTable(props) {
     const {columnsTable, dataTable} = props
-    console.log('columnsTable', columnsTable);
+    console.log('columnsTable from ShowTable', columnsTable);
+    console.log('dataTable from ShowTable', dataTable);
     const columns = React.useMemo(
       () => columnsTable, []);
     const data = React.useMemo(
@@ -25,7 +26,7 @@ function ShowTable(props) {
    
     return (
       // apply the table props
-      <Table {...getTableProps()}>
+      <Table variant='striped' colorScheme='teal' {...getTableProps()}>
         <Thead>
           {// Loop over the header rows
           headerGroups.map(headerGroup => (
