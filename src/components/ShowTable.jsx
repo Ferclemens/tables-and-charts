@@ -1,32 +1,35 @@
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
 import { useTable } from "react-table";
+import { useDataContext } from "../context/DataContext.jsx";
 
 
-function ShowTable(props) {
-    const {columnsTable, dataTable} = props
-    console.log('columnsTable from ShowTable', columnsTable);
-    console.log('dataTable from ShowTable', dataTable);
-    const columns = React.useMemo(
-      () => columnsTable, []);
-    const data = React.useMemo(
-      () => dataTable, []);
+function ShowTable() {
+  const {tableColumns, tableData} = useDataContext()
 
-    const tableInstance = useTable({ columns, data })
+  //console.log('tableColumns from Context in ShowTable', tableColumns);
+  //console.log('tableData from Context in ShowTable', tableData);
+  
+  const columns = React.useMemo(
+    () => tableColumns, [tableColumns]);
+  const data = React.useMemo(
+    () => tableData, [tableData]);
 
-    const {
-      getTableProps,
-      getTableBodyProps,
-      headerGroups,
-      rows,
-      prepareRow,
-    } = tableInstance
+  const tableInstance = useTable({ columns, data })
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = tableInstance
    
     
    
-    return (
-      // apply the table props
-      <Table variant='striped' colorScheme='teal' {...getTableProps()}>
+  return (
+    <Stack py={'1'}>
+      <Table variant='striped' colorScheme='teal' size='sm' {...getTableProps()}>
         <Thead>
           {// Loop over the header rows
           headerGroups.map(headerGroup => (
@@ -67,6 +70,7 @@ function ShowTable(props) {
           })}
         </Tbody>
       </Table>
+    </Stack>
     )
 }
 export default ShowTable;
