@@ -1,6 +1,6 @@
-import { Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Button, HStack, Input, Select, Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, usePagination } from "react-table";
 import { useDataContext } from "../context/DataContext.jsx";
 
 
@@ -15,7 +15,7 @@ function ShowTable() {
   const data = React.useMemo(
     () => tableData, [tableData]);
 
-  const tableInstance = useTable({ columns, data })
+  const tableInstance = useTable({ columns, data, initialState: { pageIndex: 0 }}, usePagination)
 
   const {
     getTableProps,
@@ -23,6 +23,16 @@ function ShowTable() {
     headerGroups,
     rows,
     prepareRow,
+    pageOptions,
+    pageCount,
+    page,
+    state: { pageIndex, pageSize },
+    gotoPage,
+    previousPage,
+    nextPage,
+    setPageSize,
+    canPreviousPage,
+    canNextPage,
   } = tableInstance
    
     
@@ -49,7 +59,7 @@ function ShowTable() {
         {/* Apply the table body props */}
         <Tbody {...getTableBodyProps()}>
           {// Loop over the table rows
-          rows.map(row => {
+          page.map(row => {
             // Prepare the row for display
             prepareRow(row)
             return (
@@ -70,7 +80,51 @@ function ShowTable() {
           })}
         </Tbody>
       </Table>
+      <HStack>
+        <Button size={'sm'} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {'<<'}
+        </Button>{' '}
+        <Button size={'sm'} onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {'<'}
+        </Button>{' '}
+        <Button size={'sm'} onClick={() => nextPage()} disabled={!canNextPage}>
+          {'>'}
+        </Button>{' '}
+        <Button size={'sm'} onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {'>>'}
+        </Button>{' '}
+        <span>
+          Page{' '}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{' '}
+        </span>
+        <span>
+          | Go to page:{' '}
+          <Input size={'sm'}
+            type="number"
+            defaultValue={pageIndex}
+            onChange={e => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0
+              gotoPage(page)
+            }}
+            style={{ width: '100px' }}
+          />
+        </span>{' '}
+        <Select size={'sm'} w={'28'}
+          value={pageSize}
+          onChange={e => {
+            setPageSize(Number(e.target.value))
+          }}
+        >
+          {[10, 20, 30, 40, 50].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </Select>
+      </HStack>
     </Stack>
-    )
+  )
 }
 export default ShowTable;
