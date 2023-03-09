@@ -10,6 +10,7 @@ import DisplayCharts from './components/DisplayCharts'
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/stadistics", element: <DisplayCharts/> },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

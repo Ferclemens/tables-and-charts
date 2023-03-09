@@ -2,7 +2,6 @@ import { Grid, GridItem, Text, VStack } from '@chakra-ui/react'
 import './App.css'
 import ReadFile from './components/ReadFile'
 import ShowTable from './components/ShowTable'
-import DisplayCharts from './components/DisplayCharts';
 import { useDataContext } from './context/DataContext.jsx';
 
 function App() {
