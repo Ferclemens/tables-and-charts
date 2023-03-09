@@ -1,12 +1,46 @@
-import { Button, HStack, Input, Select, Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Button, HStack, Input, Select, Stack, Table, Tbody, Td, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
-import { useTable, usePagination } from "react-table";
+import { useTable, usePagination, useGlobalFilter, useSortBy } from "react-table";
 import { useDataContext } from "../context/DataContext.jsx";
 
 
 function ShowTable() {
   const {tableColumns, tableData} = useDataContext()
 
+  // This is a custom filter UI that uses a
+  // slider to set the filter value between a column's
+  // min and max values
+  function SliderColumnFilter({
+    column: { filterValue, setFilter, preFilteredRows, id },
+  }) {
+    // Calculate the min and max
+    // using the preFilteredRows
+
+    const [min, max] = React.useMemo(() => {
+      let min = preFilteredRows.length ? preFilteredRows[0].values[id] : 0
+      let max = preFilteredRows.length ? preFilteredRows[0].values[id] : 0
+      preFilteredRows.forEach(row => {
+        min = Math.min(row.values[id], min)
+        max = Math.max(row.values[id], max)
+      })
+      return [min, max]
+    }, [id, preFilteredRows])
+
+    return (
+      <>
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={filterValue || min}
+          onChange={e => {
+            setFilter(parseInt(e.target.value, 10))
+          }}
+        />
+        <button onClick={() => setFilter(undefined)}>Off</button>
+      </>
+    )
+  }
   //console.log('tableColumns from Context in ShowTable', tableColumns);
   //console.log('tableData from Context in ShowTable', tableData);
   
@@ -15,7 +49,7 @@ function ShowTable() {
   const data = React.useMemo(
     () => tableData, [tableData]);
 
-  const tableInstance = useTable({ columns, data, initialState: { pageIndex: 0 }}, usePagination)
+  const tableInstance = useTable({ columns, data, initialState: { pageIndex: 0 }}, useGlobalFilter, useSortBy, usePagination )
 
   const {
     getTableProps,
@@ -33,6 +67,9 @@ function ShowTable() {
     setPageSize,
     canPreviousPage,
     canNextPage,
+    preGlobalFilteredRows,
+    setGlobalFilter,
+    state
   } = tableInstance
    
     
@@ -48,7 +85,7 @@ function ShowTable() {
               {// Loop over the headers in each row
               headerGroup.headers.map(column => (
                 // Apply the header cell props
-                <Th {...column.getHeaderProps()}>
+                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {// Render the header
                   column.render('Header')}
                 </Th>
@@ -93,14 +130,9 @@ function ShowTable() {
         <Button size={'sm'} onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
           {'>>'}
         </Button>{' '}
-        <span>
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-        <span>
-          | Go to page:{' '}
+          <Text w={'30'}>Page {pageIndex + 1} of {pageOptions.length}</Text>
+          <span>{' | '}</span>
+          <Text>Go to page:</Text>
           <Input size={'sm'}
             type="number"
             defaultValue={pageIndex}
@@ -110,19 +142,24 @@ function ShowTable() {
             }}
             style={{ width: '100px' }}
           />
-        </span>{' '}
-        <Select size={'sm'} w={'28'}
+        
+        <Select size={'sm'} w={'30'}
           value={pageSize}
           onChange={e => {
             setPageSize(Number(e.target.value))
           }}
         >
-          {[10, 20, 30, 40, 50].map(pageSize => (
+          {[10, 20, 30, 40, 50, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
           ))}
         </Select>
+        <Text w={'44'}>Total registers: {preGlobalFilteredRows.length}</Text>
+        <HStack>
+          <Text>Search:</Text>
+          <Input size={'sm'} type={'text'} w={'21'} onChange={(event) => setGlobalFilter(event.target.value)} value={state.globalFilter}></Input>
+        </HStack>
       </HStack>
     </Stack>
   )
