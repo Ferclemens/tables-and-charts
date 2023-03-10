@@ -1,22 +1,36 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
 import { useDataContext } from "../context/DataContext.jsx";
+import AreaChart from "./AreaChart.jsx";
+import BarChart from "./BarChart.jsx";
+import DonutChart from "./DonutChart.jsx";
 
 function DisplayCharts() {
-    const {jsonData} = useDataContext()
-    //console.log('jsonData from DisplayCharts', jsonData);
+/*     const {jsonData, tableData} = useDataContext()
+    console.log('jsonData from DisplayCharts', jsonData);
+    console.log('tableData from DisplayCharts', tableData); */
+
     return (
         <Grid
-            w={'100vw'}
-            h={'100vh'}
-            templateRows='repeat(2, 1fr)'
-            templateColumns='repeat(5, 1fr)'
-            gap={4}
-            >
-            <GridItem rowSpan={2} colSpan={1} bg='tomato' />
-            <GridItem colSpan={2} bg='papayawhip' />
-            <GridItem colSpan={2} bg='papayawhip' />
-            <GridItem colSpan={4} bg='tomato' />
+            templateAreas={`"settings donut area"
+                            "settings bar bar"`}
+            gridTemplateRows={'320px 1fr'}
+            gridTemplateColumns={'250px 1fr 1fr'}
+            gap='1'
+            margin='0.5'
+            color='blackAlpha.700'
+            fontWeight='bold'
+      >
+            <GridItem bg='teal' area={'settings'}></GridItem>
+            <GridItem  bg='papayawhip' area={'donut'}>
+                <DonutChart/>
+            </GridItem>
+            <GridItem  bg='green.200' area={'area'}>
+                <AreaChart/>
+            </GridItem>
+            <GridItem bg='blue.100' area={'bar'}>
+                <BarChart/>
+            </GridItem>
         </Grid>
     )
 }

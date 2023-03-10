@@ -1,7 +1,8 @@
-import { VStack } from "@chakra-ui/react";
+import { Button, Flex, HStack, Spacer, VStack } from "@chakra-ui/react";
 import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
+import { Link, NavLink } from "react-router-dom";
 
 
 const ReadFile = () => {
@@ -86,10 +87,13 @@ const ReadFile = () => {
     }
  
     return (
-        <VStack>
-            <h3>Import your xlsx file</h3>
-            <input type={'file'} onChange={(e) => handleFile(e)}></input>
-        </VStack>
+        <HStack justifyContent={'space-between'} alignItems={'center'} px={'1'}>
+            <Flex justifyContent={'flex-start'} flexDirection={'column'}>
+                <h3>Import your xlsx file</h3>
+                <input type={'file'} onChange={(e) => handleFile(e)}></input>
+            </Flex>
+            <Link to="stadistics"><Button size={'lg'} colorScheme={'facebook'}>Stadistics</Button></Link>
+        </HStack>
     )
 }
 
