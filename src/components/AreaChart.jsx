@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { VStack } from '@chakra-ui/react';
+import { useBreakpointValue, VStack } from '@chakra-ui/react';
 
 ChartJS.register(
   CategoryScale,
@@ -60,11 +60,12 @@ export const data = {
 };
 
 function AreaChart() {
-    return (
-      <VStack height={'320px'} width={'auto'}>
-        <Line options={options} data={data} />
-      </VStack>
-    )
+  const breakPoint = useBreakpointValue({base: '100vw', md: '50vw'})
+  return (
+    <VStack height={'316px'} width={breakPoint} p={'1'}>
+      <Line options={options} data={data} />
+    </VStack>
+  )
 }
 
 export default AreaChart
