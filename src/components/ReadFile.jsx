@@ -25,7 +25,7 @@ export function ExcelDateToJSDate(serial) {
     }
 
 const ReadFile = () => {
-    const {setJsonData, setTableColumns, setTableData} = useDataContext() 
+    const {setJsonData, setTableColumns, setTableData, setChartData} = useDataContext() 
 
     const formatColumns = (data) => {
         const columnsArray = Object.keys(data[0])
@@ -83,14 +83,13 @@ const ReadFile = () => {
         const workSheet = workbook.Sheets[workbook.SheetNames[0]] //determinamos como key de cada atributo del objeto Json a la primera fila de la planilla
         const dataJson = utils.sheet_to_json(workSheet) //convertimos a json la planilla
         
-        console.log('DATA', dataJson)
+        //console.log('DATA', dataJson)
         setJsonData(dataJson)
         setTableColumns(formatColumns(dataJson))
         setTableData(FormatData(dataJson))
         const arrays = getItemsArray(dataJson)
-        console.log('ARRAYDEARRAYS we', arrays);
-        const sortZonas = countDuplicates(arrays.zona)
-        console.log('Zonas Duplicados', sortZonas);
+        console.log('getItemsArray()',arrays);
+        setChartData(arrays)
     }
     return (
         <HStack justifyContent={'space-between'} alignItems={'center'} px={'1'}>

@@ -1,5 +1,6 @@
 import { ExcelDateToJSDate } from "./ReadFile"
 
+//create object with arrays of values table items
 export function getItemsArray(data) {
     const arrays = {
         clients : [],
@@ -17,7 +18,7 @@ export function getItemsArray(data) {
         importeVentaTotal : [],
         importeCosteTotal : [],
     }
-
+    
     data.map((item) => {
         arrays.clients.push(item.ID_cliente)
         arrays.zona.push(item.Zona)
@@ -36,11 +37,61 @@ export function getItemsArray(data) {
     })
     return arrays
 }
-
+// create objet of items (key) and units (value) like a count
 export function countDuplicates(data) {
     const itemsCount = {}
     data.forEach(item => {
         itemsCount[item] = itemsCount[item] +1 || 1 
     });
     return itemsCount
+}
+// get data array according to selected option
+export function selectLabel(data, select) {
+    if(select === 'options'){
+        return countDuplicates(data.clients)
+      }
+      else if(select === 'clients') {
+        return countDuplicates(data.clients)
+      }  
+      else if(select === 'zona') {
+        return countDuplicates(data.zona)
+      } 
+      else if(select === 'pais') {
+        return countDuplicates(data.pais)
+      }
+      else if(select === 'producto') {
+        return countDuplicates(data.producto)
+      }
+      else if(select === 'canalDeVenta') {
+        return countDuplicates(data.canalDeVenta)
+      }  
+      else if(select === 'prioridad') {
+        return countDuplicates(data.prioridad)
+      }  
+      else if(select === 'fechaPedido') {
+        return countDuplicates(data.fechaPedido)
+      }  
+      else if(select === 'idPedido') {
+        return countDuplicates(data.idPedido)
+      }  
+      else if(select === 'fechaEnvio') {
+        return countDuplicates(data.fechaEnvio)
+      }  
+      else if(select === 'unidades') {
+        return countDuplicates(data.unidades)
+      }  
+      else if(select === 'precioUnitario') {
+        return countDuplicates(data.precioUnitario)
+      }  
+      else if(select === 'costeUnitario') {
+        return countDuplicates(data.costeUnitario)
+      }  
+      else if(select === 'importeVentaTotal') {
+        return countDuplicates(data.importeVentaTotal)
+      }  
+      else if(select === 'importeCosteTotal') {
+        return countDuplicates(data.importeCosteTotal)
+      }  else {
+        return console.log('can\'t find label :( - selectLabel()');
+      }  
 }
