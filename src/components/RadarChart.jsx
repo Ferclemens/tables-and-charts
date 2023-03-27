@@ -37,7 +37,7 @@ export const data = {
 
 function RadarChart() {
   const {chartData} = useDataContext()
-  console.log('chartData from Radar chart', chartData);
+  //console.log('chartData from Radar chart', chartData);
   //relevante: zona - producto - canalDeVenta - prioridad 
   const selectArray = chartData ? ['zona', 'producto', 'prioridad'] : ['Select options']
   const [select, setSelect] = useState('zona')

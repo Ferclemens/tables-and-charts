@@ -8,6 +8,7 @@ export const DataContextProvider = ({children}) => {
     const [tableColumns, setTableColumns] = useState(null)
     const [tableData, setTableData] = useState(null)
     const [chartData, setChartData] = useState(null)
+    const [chartAreaData, setChartAreaData ] = useState(null)
 
     const values = {
         jsonData, 
@@ -18,7 +19,8 @@ export const DataContextProvider = ({children}) => {
         setTableData, 
         chartData, 
         setChartData,
-        
+        chartAreaData,
+        setChartAreaData
     }
     return (
         <DataContext.Provider value={values}>

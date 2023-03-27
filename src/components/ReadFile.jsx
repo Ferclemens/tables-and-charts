@@ -3,7 +3,7 @@ import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
 import { Link } from "react-router-dom";
-import { countDuplicates, getItemsArray } from "./ProcessDataToCharts.jsx";
+import { countDuplicates, getItemsArray, getMonth, getYear } from "./ProcessDataToCharts.jsx";
 
 //----ORO PURO
 //Format date type number from Excel to Date() object Javascript
@@ -25,7 +25,7 @@ export function ExcelDateToJSDate(serial) {
     }
 
 const ReadFile = () => {
-    const {setJsonData, setTableColumns, setTableData, setChartData} = useDataContext() 
+    const {setJsonData, setTableColumns, setTableData, setChartData, setChartAreaData} = useDataContext() 
 
     const formatColumns = (data) => {
         const columnsArray = Object.keys(data[0])
@@ -59,6 +59,9 @@ const ReadFile = () => {
             const unitPriceFormated = numberAmountToPesoFormat(item.Precio_unitario)
             const totalCostFormated = numberAmountToPesoFormat(item.Importe_coste_total)
             const totalSaleFormated = numberAmountToPesoFormat(item.Importe_venta_total)
+            //Fecha_envio because understand if send product, is a sell concreted.
+            const yearSell = getYear(item.Fecha_envio)
+            const monthSell = getMonth(item.Fecha_envio)
                 
             return dataJsonFormated.push({
                 ...item,
@@ -67,11 +70,33 @@ const ReadFile = () => {
                 Importe_coste_total : totalCostFormated,
                 Importe_venta_total : totalSaleFormated,
                 Fecha_envio : dateSendFormated,
-                Fecha_pedido : dateRequestFormated
+                Fecha_pedido : dateRequestFormated,
+                Año : yearSell,
+                Mes : monthSell
             })
 
         })
         //console.log('DATE FORMATED Json', dataJsonFormated);
+        return dataJsonFormated
+    }
+    function FormatDataToAreaChart(data) {
+        const dataJsonFormated = []
+        data.map((item) => {
+            const dateSendFormated = ExcelDateToJSDate(item.Fecha_envio)
+            const dateRequestFormated = ExcelDateToJSDate(item.Fecha_pedido)
+            const yearSell = getYear(item.Fecha_envio)
+            const monthSell = getMonth(item.Fecha_envio)
+                
+            return dataJsonFormated.push({
+                ...item,
+                Fecha_envio : dateSendFormated,
+                Fecha_pedido : dateRequestFormated,
+                Año : yearSell,
+                Mes : monthSell
+            })
+
+        })
+        console.log('DATE FORMATED Json PARA AREA', dataJsonFormated);
         return dataJsonFormated
     }
 
@@ -85,11 +110,15 @@ const ReadFile = () => {
         
         //console.log('DATA', dataJson)
         setJsonData(dataJson)
+        //console.log('DATAJSON', dataJson);
         setTableColumns(formatColumns(dataJson))
         setTableData(FormatData(dataJson))
-        const arrays = getItemsArray(dataJson)
-        console.log('getItemsArray()',arrays);
+        const arrays = getItemsArray(FormatData(dataJson))
+        //console.log('getItemsArray()',arrays);
         setChartData(arrays)
+        const areaChartData = FormatDataToAreaChart(dataJson)
+        setChartAreaData(areaChartData)
+
     }
     return (
         <HStack justifyContent={'space-between'} alignItems={'center'} px={'1'}>

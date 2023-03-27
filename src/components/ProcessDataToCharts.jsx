@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ExcelDateToJSDate } from "./ReadFile"
 
 //create object with arrays of values table items
@@ -17,6 +18,8 @@ export function getItemsArray(data) {
         costeUnitario : [],
         importeVentaTotal : [],
         importeCosteTotal : [],
+        año : [],
+        mes : []
     }
     
     data.map((item) => {
@@ -34,9 +37,12 @@ export function getItemsArray(data) {
         arrays.costeUnitario.push(item.Coste_unitario)
         arrays.importeVentaTotal.push(item.Importe_venta_total)
         arrays.importeCosteTotal.push(item.Importe_coste_total)
+        arrays.año.push(item.Año)
+        arrays.mes.push(item.Mes)
     })
     return arrays
 }
+
 // create objet of items (key) and units (value) like a count
 export function countDuplicates(data) {
     const itemsCount = {}
@@ -45,6 +51,7 @@ export function countDuplicates(data) {
     });
     return itemsCount
 }
+
 // get data array according to selected option
 export function selectLabel(data, select) {
     if(select === 'options'){
@@ -91,7 +98,41 @@ export function selectLabel(data, select) {
       }  
       else if(select === 'importeCosteTotal') {
         return countDuplicates(data.importeCosteTotal)
+      }
+      else if(select === 'año') {
+        return countDuplicates(data.año)
+      }
+      else if(select === 'mes') {
+        return countDuplicates(data.mes)
       }  else {
         return console.log('can\'t find label :( - selectLabel()');
       }  
+}
+
+export function getMonth(serial) {
+  let utc_days  = Math.floor(serial - 25568);
+  let utc_value = utc_days * 86400;                                        
+  let date_info = new Date(utc_value * 1000);
+  
+  let fractional_day = serial - Math.floor(serial) + 0.0000001;
+  let total_seconds = Math.floor(86400 * fractional_day);
+  let seconds = total_seconds % 60;
+  total_seconds -= seconds;
+  
+  let dateMonth = `${date_info.getMonth()+1}`
+  return dateMonth
+}
+
+export function getYear(serial) {
+  let utc_days  = Math.floor(serial - 25568);
+  let utc_value = utc_days * 86400;                                        
+  let date_info = new Date(utc_value * 1000);
+  
+  let fractional_day = serial - Math.floor(serial) + 0.0000001;
+  let total_seconds = Math.floor(86400 * fractional_day);
+  let seconds = total_seconds % 60;
+  total_seconds -= seconds;
+  
+  let dateYear = `${date_info.getFullYear()}` 
+  return dateYear
 }
