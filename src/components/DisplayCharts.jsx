@@ -1,37 +1,38 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, HStack, MenuOptionGroup, Text, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import { useDataContext } from "../context/DataContext.jsx";
 import AreaChart from "./AreaChart.jsx";
 import BarChart from "./BarChart.jsx";
 import DonutChart from "./DonutChart.jsx";
+import RadarChart from "./RadarChart.jsx";
 
 function DisplayCharts() {
-/*     const {jsonData, tableData} = useDataContext()
-    console.log('jsonData from DisplayCharts', jsonData);
-    console.log('tableData from DisplayCharts', tableData); */
-
+    //const {jsonData, tableData} = useDataContext()
+    //console.log('jsonData from DisplayCharts', jsonData);
+    //console.log('tableData from DisplayCharts', tableData);
+    const breakPoint = useBreakpointValue({base: 'column', md: 'row'})
     return (
-        <Grid
-            templateAreas={`"settings donut area"
-                            "settings bar bar"`}
-            gridTemplateRows={'320px 1fr'}
-            gridTemplateColumns={'250px 1fr 1fr'}
-            gap='1'
-            margin='0.5'
-            color='blackAlpha.700'
-            fontWeight='bold'
-      >
-            <GridItem bg='teal' area={'settings'}></GridItem>
-            <GridItem  bg='papayawhip' area={'donut'}>
-                <DonutChart/>
-            </GridItem>
-            <GridItem  bg='green.200' area={'area'}>
-                <AreaChart/>
-            </GridItem>
-            <GridItem bg='blue.100' area={'bar'}>
-                <BarChart/>
-            </GridItem>
-        </Grid>
+        <Flex flexDirection={'column'}>
+            <Box height={'150px'} bg={'teal.200'}>
+                <Text textAlign={'center'}>OPTIONS</Text>
+            </Box>
+            <Flex flexDirection={breakPoint} height={'370px'}>
+                <Box bg={'yellow.200'}>
+                    <DonutChart/>
+                </Box>
+                <Box bg={'blue.200'}>
+                    <RadarChart/>
+                </Box>
+            </Flex>
+            <Flex flexDirection={breakPoint}>
+                <Box bg={'red.100'}>
+                    <AreaChart/>
+                </Box>
+                <Box bg={'green.200'}>
+                    <BarChart/>
+                </Box>
+            </Flex>
+        </Flex>
     )
 }
 export default DisplayCharts

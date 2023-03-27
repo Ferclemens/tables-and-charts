@@ -1,4 +1,4 @@
-import { VStack } from '@chakra-ui/react';
+import { useBreakpointValue, VStack } from '@chakra-ui/react';
 import React from 'react'
 import {
     Chart as ChartJS,
@@ -43,22 +43,23 @@ ChartJS.register(
       {
         label: 'Dataset 1',
         data: labels.map(() => Math.random() * 100),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(255, 99, 132, 1)',
       },
       {
         label: 'Dataset 2',
         data: labels.map(() => Math.random() * 100),
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        backgroundColor: 'rgba(53, 162, 235, 1)',
       },
     ],
   };
 
 function BarChart() {
-    const {jsonData, tableData} = useDataContext()
+/*     const {jsonData, tableData} = useDataContext()
     console.log('jsonData from BarChart', jsonData);
-    console.log('tableData from BarChart', tableData);
+    console.log('tableData from BarChart', tableData); */
+  const breakPoint = useBreakpointValue({base: '100vw', md: '50vw'})
   return (
-    <VStack height={'50vh'} width={'auto'}>
+    <VStack height={'316px'} width={breakPoint} p={'1'}>
         <Bar options={options} data={data} />
     </VStack>
   )
