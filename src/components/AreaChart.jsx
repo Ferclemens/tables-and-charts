@@ -14,7 +14,6 @@ import { Line } from 'react-chartjs-2';
 import { HStack, Select, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
 import { countDuplicates, getMonth, getYear, selectLabel } from './ProcessDataToCharts';
-import { ExcelDateToJSDate } from './ReadFile';
 
 ChartJS.register(
   CategoryScale,
@@ -64,8 +63,8 @@ function AreaChart() {
   const handleChangeSelect2 = (event) => {
     setSelect2(event.target.value)
   }
-  const dataForChartAccordingToYear = (yearSelected) => {
-    let data = chartAreaData.filter((item) => item.Año === yearSelected)
+  const dataForChartAccordingToYear = (dataBase, yearSelected) => {
+    let data = dataBase.filter((item) => item.Año === yearSelected)
     return data
   }
   const totalSellsAccordingToMonth = (array) => {
@@ -160,7 +159,7 @@ function AreaChart() {
 
   useEffect(() => {
     const setYearData = async () => {
-      const dataArray = await dataForChartAccordingToYear(select1)
+      const dataArray = await dataForChartAccordingToYear(chartAreaData, select1)
       setYearDataSet1(dataArray)    
     }
     setYearData()
@@ -168,7 +167,7 @@ function AreaChart() {
 
   useEffect(() => {
     const setYearData = async () => {
-      const dataArray = await dataForChartAccordingToYear(select2)
+      const dataArray = await dataForChartAccordingToYear(chartAreaData, select2)
       setYearDataSet2(dataArray)    
     }
     setYearData()
