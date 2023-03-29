@@ -1,5 +1,4 @@
 import { Grid, GridItem, Text, VStack } from '@chakra-ui/react'
-import './App.css'
 import ReadFile from './components/ReadFile'
 import ShowTable from './components/ShowTable'
 import { useDataContext } from './context/DataContext.jsx';

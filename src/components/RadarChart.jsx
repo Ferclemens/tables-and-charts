@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
-import { Select, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Select, Stack, useBreakpointValue, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
 import { selectLabel } from './ProcessDataToCharts';
 
@@ -21,25 +21,34 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const labels = ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6']
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: '# of Votes',
-      data: labels.map(() => Math.random() * 100),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1,
+
+export const options = {
+  responsive: true,
+  aspectRatio: 2,
+  scales: {
+    r: {
+      ticks: {
+        display: false
+      }
+    }
+  },
+  plugins: {
+    legend: {
+      display: false,
+      position: 'top',
     },
-  ],
+    title: {
+      display: false,
+      text: 'Gráfico tipo radar',
+    },
+  },
 };
 
 function RadarChart() {
   const {chartData} = useDataContext()
   //console.log('chartData from Radar chart', chartData);
   //relevante: zona - producto - canalDeVenta - prioridad 
-  const selectArray = chartData ? ['zona', 'producto', 'prioridad'] : ['Select options']
+  const selectArray = chartData ? ['zona', 'producto'] : ['Select options']
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])
@@ -54,9 +63,9 @@ function RadarChart() {
     labels,
     datasets: [
       {
-        label: '# of Votes',
+        label: 'unidades',
         data: dataChart,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
@@ -70,13 +79,15 @@ function RadarChart() {
   }, [select])
 
   return (
-    <VStack height={'316px'} width={breakPoint} p={'1'}>
-      <Select value={select} onChange={handleChange}>
-        {selectArray.map((title) => {
-          return <option key={title} value={title}>{title}</option>
-        })}
-      </Select>
-      <Radar data={data} />
+    <VStack h={'320px'} width={breakPoint}>
+      <Stack w={'300px'}>
+        <Select value={select} onChange={handleChange} pt={'1'} bg={'blackAlpha.200'}>
+          {selectArray.map((title) => {
+            return <option key={title} value={title}>{title}</option>
+          })}
+        </Select>
+      </Stack>
+      <Radar data={data} options={options}/>
     </VStack>
   )
 }

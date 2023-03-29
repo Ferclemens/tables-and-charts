@@ -12,23 +12,21 @@ function DisplayCharts() {
     //console.log('tableData from DisplayCharts', tableData);
     const breakPoint = useBreakpointValue({base: 'column', md: 'row'})
     return (
-        <Flex flexDirection={'column'}>
-            <Box height={'150px'} bg={'teal.200'}>
-                <Text textAlign={'center'}>OPTIONS</Text>
-            </Box>
-            <Flex flexDirection={breakPoint} height={'370px'}>
-                <Box bg={'yellow.200'}>
-                    <DonutChart/>
-                </Box>
-                <Box bg={'blue.200'}>
+        <Flex flexDirection={'column'} backgroundColor={'#0f0e17'} w={'100vw'} gap={'4'}>
+            <Text textAlign={'center'} color={'whiteAlpha.700'} fontSize={'5xl'} >Gráficos de comparación y análisis</Text>
+            <Flex flexDirection={breakPoint} justifyContent={'space-evenly'} height={'390px'} >
+                <Box bg={'blue.100'} borderRadius={'5'} >
                     <RadarChart/>
+                </Box>
+                <Box bg={'blue.100'} borderRadius={'5'}>
+                    <DonutChart/>
                 </Box>
             </Flex>
             <Flex flexDirection={breakPoint}>
-                <Box bg={'red.100'}>
+                <Box bg={'green.100'} height={'400px'}>
                     <AreaChart/>
                 </Box>
-                <Box bg={'green.200'}>
+                <Box bg={'green.100'} height={'400px'}>
                     <BarChart/>
                 </Box>
             </Flex>

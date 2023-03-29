@@ -121,7 +121,7 @@ const ReadFile = () => {
 
     }
     return (
-        <HStack justifyContent={'space-between'} alignItems={'center'} px={'1'}>
+        <HStack justifyContent={'space-around'} alignItems={'center'} px={'1'}>
             <Flex justifyContent={'flex-start'} flexDirection={'column'}>
                 <h3>Import your xlsx file</h3>
                 <input type={'file'} onChange={(e) => handleFile(e)}></input>
