@@ -12,21 +12,21 @@ function DisplayCharts() {
     //console.log('tableData from DisplayCharts', tableData);
     const breakPoint = useBreakpointValue({base: 'column', md: 'row'})
     return (
-        <Flex flexDirection={'column'} backgroundColor={'#0f0e17'} w={'100vw'} gap={'4'}>
-            <Text textAlign={'center'} color={'whiteAlpha.700'} fontSize={'5xl'} >Gráficos de comparación y análisis</Text>
-            <Flex flexDirection={breakPoint} justifyContent={'space-evenly'} height={'390px'} >
-                <Box bg={'blue.100'} borderRadius={'5'} >
+        <Flex flexDirection={'column'} backgroundColor={'#0f0e17'} color={'orange.200'}>
+            <Text textAlign={'center'}  fontSize={'5xl'} >Gráficos de comparación y análisis</Text>
+            <Flex flexDirection={breakPoint} alignItems={'center'} justifyContent={'center'}>
+                <Box bg={'rgba(115, 113, 106, 0.3)'} borderRadius={'5'} h={'65vh'} m={'2'}>
                     <RadarChart/>
                 </Box>
-                <Box bg={'blue.100'} borderRadius={'5'}>
+                <Box bg={'rgba(115, 113, 106, 0.3)'} borderRadius={'5'} h={'65vh'} m={'2'}>
                     <DonutChart/>
                 </Box>
             </Flex>
-            <Flex flexDirection={breakPoint}>
-                <Box bg={'green.100'} height={'400px'}>
+            <Flex flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+                <Box bg={'rgba(115, 113, 106, 0.3)'} borderRadius={'5'} h={'65vh'} m={'2'}>
                     <AreaChart/>
                 </Box>
-                <Box bg={'green.100'} height={'400px'}>
+                <Box bg={'rgba(115, 113, 106, 0.3)'} borderRadius={'5'} h={'65vh'} m={'2'}>
                     <BarChart/>
                 </Box>
             </Flex>

@@ -27,7 +27,7 @@ function DonutChart() {
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])
-  const breakPoint = useBreakpointValue({base: '100vw', md: '50vw'})
+  const breakPoint = useBreakpointValue({base: '91vw', md: '45vw'})
   
   
   const handleChange = (event) => {
@@ -81,7 +81,7 @@ function DonutChart() {
   }, [select])
   
   return (
-    <VStack h={'320px'} width={breakPoint}>
+    <VStack h={'50vh'} width={breakPoint} position={'relative'}>
       <Stack w={'300px'}>
         <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
             {selectArray.map((title) => {

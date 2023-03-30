@@ -27,6 +27,15 @@ export const options = {
   aspectRatio: 2,
   scales: {
     r: {
+      pointLabels: {
+        color: 'rgba(225,190,129,0.8)'
+      },
+      angleLines: {
+        color: 'rgba(225,190,129,0.8)'
+      },
+      grid: {
+        color: 'rgba(225,190,129,0.8)'
+      },
       ticks: {
         display: false
       }
@@ -52,7 +61,7 @@ function RadarChart() {
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])
-  const breakPoint = useBreakpointValue({base: '100vw', md: '50vw'})
+  const breakPoint = useBreakpointValue({base: '91vw', md: '45vw'})
 
   const handleChange = (event) => {
     setSelect(event.target.value)
@@ -65,7 +74,7 @@ function RadarChart() {
       {
         label: 'unidades',
         data: dataChart,
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgba(255, 99, 132, 0.6)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
@@ -79,9 +88,9 @@ function RadarChart() {
   }, [select])
 
   return (
-    <VStack h={'320px'} width={breakPoint}>
+    <VStack h={'50vh'} width={breakPoint} position={'relative'}>
       <Stack w={'300px'}>
-        <Select value={select} onChange={handleChange} pt={'1'} bg={'blackAlpha.200'}>
+        <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
           {selectArray.map((title) => {
             return <option key={title} value={title}>{title}</option>
           })}

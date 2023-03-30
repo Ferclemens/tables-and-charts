@@ -25,6 +25,28 @@ ChartJS.register(
   
   export const options = {
     responsive: true,
+    scales: {
+      x: {
+        grid: {
+          color: 'rgba(225,190,129,0.8)',
+          borderColor: 'rgba(225,190,129,0.8)',
+          tickColor: 'rgba(225,190,129,0.8)'
+        },
+        ticks: {
+          color: 'rgba(225,190,129,0.8)',
+        }
+      },
+      y: {
+        grid: {
+          color: 'rgba(225,190,129,0.8)',
+          borderColor: 'rgba(225,190,129,0.8)',
+          tickColor: 'rgba(225,190,129,0.8)'
+        },
+        ticks: {
+          color: 'rgba(225,190,129,0.8)',
+        }
+      }
+    },
     plugins: {
       legend: {
         position: 'top',
@@ -37,22 +59,6 @@ ChartJS.register(
   };
   
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => Math.random() * 100),
-        backgroundColor: 'rgba(255, 99, 132, 1)',
-      },
-      {
-        label: 'Dataset 2',
-        data: labels.map(() => Math.random() * 100),
-        backgroundColor: '255, 99, 132, 0.2)',
-      },
-    ],
-  };
 
 function BarChart() {
 /*     const {jsonData, tableData} = useDataContext()
@@ -159,14 +165,14 @@ function BarChart() {
           label: select1,
           data: monthDataSet1,
           borderColor: 'rgb(53, 162, 235)',
-          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          backgroundColor: 'rgba(53, 162, 235, 0.9)',
         },
         {
           fill: true,
           label: select2,
           data: monthDataSet2,
           borderColor: 'rgba(255, 99, 132, 1)',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          backgroundColor: 'rgba(255, 99, 132, 0.9)',
         },
       ],
     }
@@ -204,7 +210,7 @@ function BarChart() {
     }, [yearDataSet2])
   
   return (
-    <VStack height={'316px'} width={breakPoint} p={'1'}>
+    <VStack h={'50vh'} width={'91vw'} p={'1'}>
       <HStack>
       <Stack>
         <Text>Data set 1</Text>
