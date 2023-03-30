@@ -42,7 +42,7 @@ function ShowTable() {
    
   return (
     <Stack py={'1'}>
-      <Table variant='striped' colorScheme='teal' size='sm' {...getTableProps()}>
+      <Table variant='striped' colorScheme='whiteAlpha' size='sm' {...getTableProps()}>
         <Thead>
           {// Loop over the header rows
           headerGroups.map(headerGroup => (
@@ -51,7 +51,7 @@ function ShowTable() {
               {// Loop over the headers in each row
               headerGroup.headers.map(column => (
                 // Apply the header cell props
-                <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <Th color='yellow.400' {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {// Render the header
                   column.render('Header')}
                 </Th>
@@ -84,16 +84,64 @@ function ShowTable() {
         </Tbody>
       </Table>
       <HStack>
-        <Button size={'sm'} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        <Button 
+        size={'sm'} 
+        onClick={() => gotoPage(0)} 
+        disabled={!canPreviousPage}
+        boxShadow='md' 
+                p='3' 
+                rounded='md' 
+                bg='yellow.700'
+                _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.700'
+                }}
+        >
           {'<<'}
         </Button>{' '}
-        <Button size={'sm'} onClick={() => previousPage()} disabled={!canPreviousPage}>
+        <Button 
+        size={'sm'} 
+        onClick={() => previousPage()} 
+        disabled={!canPreviousPage}
+        boxShadow='md' 
+                p='3' 
+                rounded='md' 
+                bg='yellow.700'
+                _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.700'
+                }}
+        >
           {'<'}
         </Button>{' '}
-        <Button size={'sm'} onClick={() => nextPage()} disabled={!canNextPage}>
+        <Button 
+        size={'sm'} 
+        onClick={() => nextPage()} 
+        disabled={!canNextPage}
+        boxShadow='md' 
+                p='3' 
+                rounded='md' 
+                bg='yellow.700'
+                _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.700'
+                }}
+        >
           {'>'}
         </Button>{' '}
-        <Button size={'sm'} onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+        <Button 
+        size={'sm'} 
+        onClick={() => gotoPage(pageCount - 1)} 
+        disabled={!canNextPage}
+        boxShadow='md' 
+                p='3' 
+                rounded='md' 
+                bg='yellow.700'
+                _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.700'
+                }}
+        >
           {'>>'}
         </Button>{' '}
           <Text w={'30'}>Page {pageIndex + 1} of {pageOptions.length}</Text>

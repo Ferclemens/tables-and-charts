@@ -31,22 +31,22 @@ export const options = {
   scales: {
     x: {
       grid: {
-        color: 'rgba(225,190,129,0.8)',
-        borderColor: 'rgba(225,190,129,0.8)',
-        tickColor: 'rgba(225,190,129,0.8)'
+        color: 'rgba(219,161,47,1)',
+        borderColor: 'rgba(219,161,47,1)',
+        tickColor: 'rgba(219,161,47,1)'
       },
       ticks: {
-        color: 'rgba(225,190,129,0.8)',
+        color: 'rgba(219,161,47,1)',
       }
     },
     y: {
       grid: {
-        color: 'rgba(225,190,129,0.8)',
-        borderColor: 'rgba(225,190,129,0.8)',
-        tickColor: 'rgba(225,190,129,0.8)'
+        color: 'rgba(219,161,47,1)',
+        borderColor: 'rgba(219,161,47,1)',
+        tickColor: 'rgba(219,161,47,1)'
       },
       ticks: {
-        color: 'rgba(225,190,129,0.8)',
+        color: 'rgba(219,161,47,1)',
       }
     }
   },

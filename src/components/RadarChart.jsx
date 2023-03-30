@@ -28,13 +28,13 @@ export const options = {
   scales: {
     r: {
       pointLabels: {
-        color: 'rgba(225,190,129,0.8)'
+        color: 'rgba(219,161,47,1)'
       },
       angleLines: {
-        color: 'rgba(225,190,129,0.8)'
+        color: 'rgba(219,161,47,1)'
       },
       grid: {
-        color: 'rgba(225,190,129,0.8)'
+        color: 'rgba(219,161,47,1)'
       },
       ticks: {
         display: false
@@ -74,7 +74,7 @@ function RadarChart() {
       {
         label: 'unidades',
         data: dataChart,
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        backgroundColor: 'rgba(255, 99, 132, 0.9)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },

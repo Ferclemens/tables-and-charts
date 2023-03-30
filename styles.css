@@ -1,0 +1,13 @@
+.load--file {
+    opacity: 0; /* make transparent */
+    z-index: -1; /* move under anything else */
+    position: absolute; /* don't let it take up space */
+    width: 50px;
+}
+.load--label {
+    padding: 12px;
+    cursor: pointer;
+}
+.img--LinkedIn {
+    height: 30px;
+}

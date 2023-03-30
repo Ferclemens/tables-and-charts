@@ -1,4 +1,4 @@
-import { Button, Flex, HStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, HStack, Image, Img, Input, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
@@ -121,12 +121,35 @@ const ReadFile = () => {
 
     }
     return (
-        <HStack justifyContent={'space-around'} alignItems={'center'} px={'1'}>
-            <Flex justifyContent={'flex-start'} flexDirection={'column'}>
-                <h3>Import your xlsx file</h3>
-                <input type={'file'} onChange={(e) => handleFile(e)}></input>
-            </Flex>
-            <Link to="stadistics"><Button size={'lg'} colorScheme={'facebook'}>Stadistics</Button></Link>
+        <HStack justifyContent={'flex-end'} alignItems={'center'} >
+            <ButtonGroup gap={'6'} mr={'14'}>
+            <Box 
+            position={'relative'} 
+            boxShadow='md' 
+            p='3' 
+            rounded='md' 
+            bg='yellow.800'
+            _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.800'
+                }}
+            >
+                <label className="load--label" for='file-upload'>Upload xlsx File</label>
+                <input className="load--file" type='file' id='file-upload' onChange={(e) => handleFile(e)} position={'absolute'}></input>
+            </Box>
+            <Link to="stadistics">
+                <Button 
+                size={'lg'} 
+                boxShadow='md' 
+                p='3' 
+                rounded='md' 
+                bg='yellow.800'
+                _hover={{
+                    background: "yellow.500",
+                    color: 'yellow.800'
+                }}
+                >Stadistics</Button></Link>
+            </ButtonGroup>
         </HStack>
     )
 }
