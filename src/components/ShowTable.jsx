@@ -88,7 +88,7 @@ function ShowTable() {
         size={'sm'} 
         onClick={() => gotoPage(0)} 
         disabled={!canPreviousPage}
-        boxShadow='md' 
+        boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -1px -1px 0px inset;'} 
                 p='3' 
                 rounded='md' 
                 bg='yellow.700'
@@ -103,7 +103,7 @@ function ShowTable() {
         size={'sm'} 
         onClick={() => previousPage()} 
         disabled={!canPreviousPage}
-        boxShadow='md' 
+        boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -1px -1px 0px inset;'}  
                 p='3' 
                 rounded='md' 
                 bg='yellow.700'
@@ -118,7 +118,7 @@ function ShowTable() {
         size={'sm'} 
         onClick={() => nextPage()} 
         disabled={!canNextPage}
-        boxShadow='md' 
+        boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -1px -1px 0px inset;'}  
                 p='3' 
                 rounded='md' 
                 bg='yellow.700'
@@ -133,7 +133,7 @@ function ShowTable() {
         size={'sm'} 
         onClick={() => gotoPage(pageCount - 1)} 
         disabled={!canNextPage}
-        boxShadow='md' 
+        boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -1px -1px 0px inset;'}  
                 p='3' 
                 rounded='md' 
                 bg='yellow.700'

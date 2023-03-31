@@ -125,7 +125,7 @@ const ReadFile = () => {
             <ButtonGroup gap={'6'} mr={'14'}>
             <Box 
             position={'relative'} 
-            boxShadow='md' 
+            boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
             p='3' 
             rounded='md' 
             bg='yellow.800'
@@ -140,7 +140,7 @@ const ReadFile = () => {
             <Link to="stadistics">
                 <Button 
                 size={'lg'} 
-                boxShadow='md' 
+                boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
                 p='3' 
                 rounded='md' 
                 bg='yellow.800'
