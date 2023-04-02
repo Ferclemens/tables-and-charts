@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Flex, HStack, Image, Img, Input, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Image, Img, Input, Text, useDisclosure, VStack } from "@chakra-ui/react";
 import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
@@ -25,7 +25,8 @@ export function ExcelDateToJSDate(serial) {
     }
 
 const ReadFile = () => {
-    const {setJsonData, setTableColumns, setTableData, setChartData, setChartAreaData} = useDataContext() 
+    const {setJsonData, setTableColumns, setTableData, setChartData, setChartAreaData} = useDataContext()
+    const { isOpen, onOpen, onClose } = useDisclosure() 
 
     const formatColumns = (data) => {
         const columnsArray = Object.keys(data[0])
@@ -123,6 +124,32 @@ const ReadFile = () => {
     return (
         <HStack justifyContent={'flex-end'} alignItems={'center'} >
             <ButtonGroup gap={'6'} mr={'14'}>
+            <Button 
+             onClick={onOpen}
+             size={'lg'} 
+             boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
+             p='3' 
+             rounded='md' 
+             bg='yellow.800'
+             _hover={{
+                 background: "yellow.500",
+                 color: 'yellow.800'
+             }}
+             >
+               <Text>Instructions</Text>
+            </Button>
+            <Drawer placement={'bottom'} onClose={onClose} isOpen={isOpen}>
+                <DrawerOverlay />
+                <DrawerContent bg='rgba(11,7,3,1)' color='yellow.500'>
+                <DrawerHeader fontSize={'2xl'}>Instrucciones de uso</DrawerHeader>
+                <DrawerBody p={'8'} fontSize={'xl'}>
+                    <Text >La app esta optimizada para el archivo xlsx "Listado de registro de ventas de productos en Excel" (es el último ejemplo) que lo pueden descargar desde <a href="https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel" target='_blank' rel="noopener noreferrer">https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel</a></Text>
+                    <Text>Una vez descargado, lo suben desde el boton "Upload xlsx file".
+                    Se despliega la tabla en el navegador donde pueden navegar entre las páginas de la tabla, o buscar datos específicos con el buscador. Si van al boton "Charts" pueden ver comparaciones gráficas de los datos cargados.</Text>
+                    <Text>Mientras se respeten los encabezados de la tabla, la app funciona correctamente. Por lo tanto pueden tabular datos reales de su empresa con esos encabezados y verlos en el browser.</Text>
+                </DrawerBody>
+                </DrawerContent>
+            </Drawer>
             <Box 
             position={'relative'} 
             boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
@@ -137,7 +164,7 @@ const ReadFile = () => {
                 <label className="load--label" for='file-upload'>Upload xlsx File</label>
                 <input className="load--file" type='file' id='file-upload' onChange={(e) => handleFile(e)} position={'absolute'}></input>
             </Box>
-            <Link to="stadistics">
+            <Link to="charts">
                 <Button 
                 size={'lg'} 
                 boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
@@ -148,7 +175,7 @@ const ReadFile = () => {
                     background: "yellow.500",
                     color: 'yellow.800'
                 }}
-                >Stadistics</Button></Link>
+                >Charts</Button></Link>
             </ButtonGroup>
         </HStack>
     )
