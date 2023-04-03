@@ -1,6 +1,5 @@
-import { Box, Button, ButtonGroup, Flex, Grid, GridItem, HStack, MenuOptionGroup, Spacer, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
-import { useDataContext } from "../context/DataContext.jsx";
 import AreaChart from "./AreaChart.jsx";
 import BarChart from "./BarChart.jsx";
 import DonutChart from "./DonutChart.jsx";
@@ -8,10 +7,6 @@ import RadarChart from "./RadarChart.jsx";
 import { Link } from "react-router-dom";
 
 function DisplayCharts() {
-    //const {jsonData, tableData} = useDataContext()
-    //console.log('jsonData from DisplayCharts', jsonData);
-    //console.log('tableData from DisplayCharts', tableData);
-    const breakPoint = useBreakpointValue({base: 'column', md: 'row'})
     const direction = useBreakpointValue({base: 'column-reverse', md: 'row'})
     const titleSize = useBreakpointValue({base: '3xl', md: '4xl'})
     return (
@@ -40,19 +35,19 @@ function DisplayCharts() {
                 }}
                 ><img src="./public/arrowLeft.png" className="img--back--tables"></img>Tables</Button></Link>
           </Flex>
-            <Flex flexDirection={breakPoint} alignItems={'center'} justifyContent={'center'}>
-                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'65vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
+            <Flex flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'100vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
                     <RadarChart/>
                 </Box>
-                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'65vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
+                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'100vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
                     <DonutChart/>
                 </Box>
             </Flex>
             <Flex flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
-                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'70vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
+                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'100vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
                     <AreaChart/>
                 </Box>
-                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'70vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
+                <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'100vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>
                     <BarChart/>
                 </Box>
             </Flex>

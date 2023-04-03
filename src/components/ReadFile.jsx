@@ -1,9 +1,9 @@
-import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Image, Img, Input, Text, useBreakpointValue, useDisclosure, VStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, HStack, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
 import { Link } from "react-router-dom";
-import { countDuplicates, getItemsArray, getMonth, getYear } from "./ProcessDataToCharts.jsx";
+import { getItemsArray, getMonth, getYear } from "./ProcessDataToCharts.jsx";
 
 //----ORO PURO
 //Format date type number from Excel to Date() object Javascript
@@ -141,6 +141,7 @@ const ReadFile = () => {
             <Drawer placement={'bottom'} onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 <DrawerContent bg='rgba(11,7,3,1)' color='yellow.500'>
+                <DrawerCloseButton />
                 <DrawerHeader fontSize={'2xl'}>Instrucciones de uso</DrawerHeader>
                 <DrawerBody p={'8'} fontSize={'xl'}>
                     <Text >La app esta optimizada para el archivo xlsx "Listado de registro de ventas de productos en Excel" (es el último ejemplo) que lo pueden descargar desde <a href="https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel" target='_blank' rel="noopener noreferrer">https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel</a></Text>

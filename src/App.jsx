@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex, Grid, GridItem, Image, Link, Spacer, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { ButtonGroup, Flex, Grid, GridItem, Link, Spacer, Text, useBreakpointValue } from '@chakra-ui/react'
 import ReadFile from './components/ReadFile'
 import ShowTable from './components/ShowTable'
 import { useDataContext } from './context/DataContext.jsx';

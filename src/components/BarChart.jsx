@@ -1,4 +1,4 @@
-import { Flex, HStack, Select, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Flex, Select, Stack, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import {
     Chart as ChartJS,
@@ -70,7 +70,6 @@ function BarChart() {
     const [monthDataSet1, setMonthDataSet1] = useState([1, 2, 3])
     const [yearDataSet2, setYearDataSet2] = useState([1, 2, 3])
     const [monthDataSet2, setMonthDataSet2] = useState([1, 2, 3])
-    const selectDirection = useBreakpointValue({base: 'column', md: 'row'})
     
     const handleChangeSelect1 = (event) => {
       setSelect1(event.target.value)
@@ -205,8 +204,8 @@ function BarChart() {
     }, [yearDataSet2])
   
   return (
-    <VStack h={'50vh'} w={'91vw'} p={'1'}>
-      <Flex flexDirection={selectDirection} gap={'2'}>
+    <VStack h={'85%'} w={'91vw'} p={'1'} position={'relative'}>
+      <Flex gap={'2'}>
         <Stack w={'230px'}>
           <Select onChange={handleChangeSelect1} pt={'2'}>
             {selectYear.map((title) => {

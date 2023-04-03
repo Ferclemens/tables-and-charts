@@ -11,9 +11,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Flex, HStack, Select, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Flex, Select, Stack, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
-import { countDuplicates, getMonth, getYear, selectLabel } from './ProcessDataToCharts';
+import { countDuplicates } from './ProcessDataToCharts';
 
 ChartJS.register(
   CategoryScale,
@@ -75,7 +75,6 @@ function AreaChart() {
   const [monthDataSet1, setMonthDataSet1] = useState([1, 2, 3])
   const [yearDataSet2, setYearDataSet2] = useState([1, 2, 3])
   const [monthDataSet2, setMonthDataSet2] = useState([1, 2, 3])
-  const selectDirection = useBreakpointValue({base: 'column', md: 'row'})
   
   const handleChangeSelect1 = (event) => {
     setSelect1(event.target.value)
@@ -210,8 +209,8 @@ function AreaChart() {
   }, [yearDataSet2])
 
   return (
-    <VStack h={'50vh'} width={'91vw'} p={'1'} position={'relative'}>
-      <Flex flexDirection={selectDirection} gap={'2'}>
+    <VStack h={'85%'} width={'91vw'} p={'1'} position={'relative'}>
+      <Flex gap={'2'}>
       <Stack w={'230px'}>
         <Select onChange={handleChangeSelect1} pt={'2'}>
           {selectYear.map((title) => {

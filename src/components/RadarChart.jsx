@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
-import { Select, Stack, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Select, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
 import { selectLabel } from './ProcessDataToCharts';
 
@@ -60,7 +60,6 @@ function RadarChart() {
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])
-  const breakPoint = useBreakpointValue({base: '91vw', md: '45vw'})
 
   const handleChange = (event) => {
     setSelect(event.target.value)
@@ -87,7 +86,7 @@ function RadarChart() {
   }, [select])
 
   return (
-    <VStack h={'50vh'} width={breakPoint} position={'relative'}>
+    <VStack h={'80vh'} w={'91vw'} position={'relative'}>
         <Select w={'300px'} value={select} onChange={handleChange} pt={'3'} bg={'blackAlpha.200'}>
           {selectArray.map((title) => {
             return <option key={title} value={title}>{title}</option>
