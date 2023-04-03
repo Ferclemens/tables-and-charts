@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex, Grid, GridItem, Image, Link, Spacer, Text, useBreakpointValue, VStack } from '@chakra-ui/react'
+import { ButtonGroup, Flex, Grid, GridItem, Link, Spacer, Text, useBreakpointValue } from '@chakra-ui/react'
 import ReadFile from './components/ReadFile'
 import ShowTable from './components/ShowTable'
 import { useDataContext } from './context/DataContext.jsx';
@@ -6,7 +6,8 @@ import '../styles.css'
 
 function App() {
   const {tableData} = useDataContext()
-  const titleSize = useBreakpointValue({base: '3xl', md: '5xl'})
+  const titleSize = useBreakpointValue({base: '3xl', md: '4xl'})
+  const titleDirection = useBreakpointValue({base: 'column-reverse', md: 'row'}) 
   return (
       <Grid
         templateAreas={`"header header"
@@ -22,8 +23,8 @@ function App() {
         bg='rgba(11,7,3,1)'
 
       >
-        <GridItem p={'1'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, yellow.800)' area={'header'}>
-          <Flex mr={'14'} alignItems={'center'}>
+        <GridItem p={'2'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, yellow.800)' area={'header'}>
+          <Flex mx={'6'} alignItems={'center'} flexDirection={titleDirection} gap={'2'}>
           <Text fontSize={titleSize} fontWeight={'bold'} textAlign={'center'} >Table-Chart App</Text>
           <Spacer></Spacer>
           <ButtonGroup gap={'4'}>
@@ -44,7 +45,7 @@ function App() {
         </GridItem>
         <GridItem bgGradient='linear(to-r, yellow.800,blackAlpha.100, blackAlpha.100 )' area={'footer'} position={'fixed'} bottom={0} w={'100vw'} >
           
-          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mb={'1'}>Made with Chakra UI - Fer Clemens developer - foclemens@gmail.com </Text>
+          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mb={'1'}>Fer Clemens - foclemens@gmail.com </Text>
         </GridItem>
       </Grid>
     )

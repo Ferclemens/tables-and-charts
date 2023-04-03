@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
-import { Select, Stack, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Select, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
 import { selectLabel } from './ProcessDataToCharts';
 
@@ -55,13 +55,11 @@ export const options = {
 
 function RadarChart() {
   const {chartData} = useDataContext()
-  //console.log('chartData from Radar chart', chartData);
-  //relevante: zona - producto - canalDeVenta - prioridad 
+  //relevante: zona - producto 
   const selectArray = chartData ? ['zona', 'producto'] : ['Select options']
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])
-  const breakPoint = useBreakpointValue({base: '91vw', md: '45vw'})
 
   const handleChange = (event) => {
     setSelect(event.target.value)
@@ -88,14 +86,12 @@ function RadarChart() {
   }, [select])
 
   return (
-    <VStack h={'50vh'} width={breakPoint} position={'relative'}>
-      <Stack w={'300px'}>
-        <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
+    <VStack h={'80vh'} w={'91vw'} position={'relative'}>
+        <Select w={'300px'} value={select} onChange={handleChange} pt={'3'} bg={'blackAlpha.200'}>
           {selectArray.map((title) => {
             return <option key={title} value={title}>{title}</option>
           })}
         </Select>
-      </Stack>
       <Radar data={data} options={options}/>
     </VStack>
   )

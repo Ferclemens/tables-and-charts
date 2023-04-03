@@ -11,9 +11,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { HStack, Select, Stack, Text, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Flex, Select, Stack, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
-import { countDuplicates, getMonth, getYear, selectLabel } from './ProcessDataToCharts';
+import { countDuplicates } from './ProcessDataToCharts';
 
 ChartJS.register(
   CategoryScale,
@@ -56,7 +56,8 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Comparación Ventas',
+      text: 'YEAR SELLS',
+      color: 'rgba(219,161,47,1)', 
     },
   },
 };
@@ -67,7 +68,6 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 
 function AreaChart() {
   const {chartAreaData, chartData} = useDataContext()
-  //console.log('CHART DATA', chartAreaData);
   const selectYear = chartData ? Object.keys(countDuplicates(chartData.año)) : ['Select year']
   const [select1, setSelect1] = useState('año')
   const [select2, setSelect2] = useState('año')
@@ -75,9 +75,6 @@ function AreaChart() {
   const [monthDataSet1, setMonthDataSet1] = useState([1, 2, 3])
   const [yearDataSet2, setYearDataSet2] = useState([1, 2, 3])
   const [monthDataSet2, setMonthDataSet2] = useState([1, 2, 3])
-  //console.log('DATA CHART YEAR RENDER',yearDataSet1)
-  //console.log('DATA CHART MONTH RENDER',monthDataSet1);
-  const breakPoint = useBreakpointValue({base: '100vw', md: '50vw'})
   
   const handleChangeSelect1 = (event) => {
     setSelect1(event.target.value)
@@ -212,25 +209,23 @@ function AreaChart() {
   }, [yearDataSet2])
 
   return (
-    <VStack h={'50vh'} width={'91vw'} p={'1'} position={'relative'}>
-      <HStack>
-      <Stack>
-        <Text>Data set 1</Text>
-        <Select onChange={handleChangeSelect1}>
+    <VStack h={'85%'} width={'91vw'} p={'1'} position={'relative'}>
+      <Flex gap={'2'}>
+      <Stack w={'230px'}>
+        <Select onChange={handleChangeSelect1} pt={'2'}>
           {selectYear.map((title) => {
             return <option key={title} value={title}>{title}</option>
           })}
         </Select>
       </Stack>
-      <Stack>
-        <Text>Data set 2</Text>
-        <Select onChange={handleChangeSelect2}>
+      <Stack w={'230px'}>
+        <Select onChange={handleChangeSelect2} pt={'2'}>
           {selectYear.map((title) => {
             return <option key={title} value={title}>{title}</option>
           })}
         </Select>
       </Stack>
-      </HStack>
+      </Flex>
       <Line options={options} data={data} />
     </VStack>
   )

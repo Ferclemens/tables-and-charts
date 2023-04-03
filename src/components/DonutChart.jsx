@@ -1,4 +1,4 @@
-import { Select, Stack, useBreakpointValue, VStack } from '@chakra-ui/react';
+import { Select, Stack, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
@@ -10,7 +10,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: 'right',
     },
     title: {
       display: false,
@@ -21,14 +21,10 @@ export const options = {
 
 function DonutChart() {
   const {chartData} = useDataContext()
-  //console.log('chartData from Donut chart', chartData);
-  //relevante: zona - producto - canalDeVenta - prioridad 
   const selectArray = chartData ? ['zona', 'producto', 'canalDeVenta', 'prioridad'] : ['Select options']
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
-  const [dataChart, setDataChart] = useState([1, 2, 3])
-  const breakPoint = useBreakpointValue({base: '91vw', md: '45vw'})
-  
+  const [dataChart, setDataChart] = useState([1, 2, 3])  
   
   const handleChange = (event) => {
     setSelect(event.target.value)
@@ -81,9 +77,9 @@ function DonutChart() {
   }, [select])
   
   return (
-    <VStack h={'50vh'} width={breakPoint} position={'relative'}>
+    <VStack h={'90vh'} width={'91vw'} position={'relative'}>
       <Stack w={'300px'}>
-        <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
+        <Select value={select} onChange={handleChange} pt={'3'} bg={'blackAlpha.200'}>
             {selectArray.map((title) => {
               return <option key={title} value={title}>{title}</option>
             })}
