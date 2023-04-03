@@ -6,7 +6,8 @@ import '../styles.css'
 
 function App() {
   const {tableData} = useDataContext()
-  const titleSize = useBreakpointValue({base: '3xl', md: '5xl'})
+  const titleSize = useBreakpointValue({base: '3xl', md: '4xl'})
+  const titleDirection = useBreakpointValue({base: 'column-reverse', md: 'row'}) 
   return (
       <Grid
         templateAreas={`"header header"
@@ -22,8 +23,8 @@ function App() {
         bg='rgba(11,7,3,1)'
 
       >
-        <GridItem p={'1'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, yellow.800)' area={'header'}>
-          <Flex mr={'14'} alignItems={'center'}>
+        <GridItem p={'2'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, yellow.800)' area={'header'}>
+          <Flex mx={'6'} alignItems={'center'} flexDirection={titleDirection} gap={'2'}>
           <Text fontSize={titleSize} fontWeight={'bold'} textAlign={'center'} >Table-Chart App</Text>
           <Spacer></Spacer>
           <ButtonGroup gap={'4'}>

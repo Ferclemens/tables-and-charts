@@ -21,8 +21,6 @@ export const options = {
 
 function DonutChart() {
   const {chartData} = useDataContext()
-  //console.log('chartData from Donut chart', chartData);
-  //relevante: zona - producto - canalDeVenta - prioridad 
   const selectArray = chartData ? ['zona', 'producto', 'canalDeVenta', 'prioridad'] : ['Select options']
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
@@ -83,7 +81,7 @@ function DonutChart() {
   return (
     <VStack h={'50vh'} width={breakPoint} position={'relative'}>
       <Stack w={'300px'}>
-        <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
+        <Select value={select} onChange={handleChange} pt={'3'} bg={'blackAlpha.200'}>
             {selectArray.map((title) => {
               return <option key={title} value={title}>{title}</option>
             })}

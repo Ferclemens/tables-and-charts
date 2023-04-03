@@ -5,11 +5,15 @@
     width: 50px;
 }
 .load--label {
-    
     cursor: pointer;
     text-align: center;
 }
 .img--contact {
     height: 30px;
     width: 35px;
+}
+.img--back--tables {
+    height: 30px;
+    width: 35px;
+    margin-right: 6px;
 }

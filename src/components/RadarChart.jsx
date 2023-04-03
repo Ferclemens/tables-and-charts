@@ -55,8 +55,7 @@ export const options = {
 
 function RadarChart() {
   const {chartData} = useDataContext()
-  //console.log('chartData from Radar chart', chartData);
-  //relevante: zona - producto - canalDeVenta - prioridad 
+  //relevante: zona - producto 
   const selectArray = chartData ? ['zona', 'producto'] : ['Select options']
   const [select, setSelect] = useState('zona')
   const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
@@ -89,13 +88,11 @@ function RadarChart() {
 
   return (
     <VStack h={'50vh'} width={breakPoint} position={'relative'}>
-      <Stack w={'300px'}>
-        <Select value={select} onChange={handleChange} pt={'2'} bg={'blackAlpha.200'}>
+        <Select w={'300px'} value={select} onChange={handleChange} pt={'3'} bg={'blackAlpha.200'}>
           {selectArray.map((title) => {
             return <option key={title} value={title}>{title}</option>
           })}
         </Select>
-      </Stack>
       <Radar data={data} options={options}/>
     </VStack>
   )

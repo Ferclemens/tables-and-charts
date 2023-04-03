@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Image, Img, Input, Text, useDisclosure, VStack } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Image, Img, Input, Text, useBreakpointValue, useDisclosure, VStack } from "@chakra-ui/react";
 import React from "react";
 import { read, utils } from 'xlsx';
 import { useDataContext } from "../context/DataContext.jsx";
@@ -26,7 +26,7 @@ export function ExcelDateToJSDate(serial) {
 
 const ReadFile = () => {
     const {setJsonData, setTableColumns, setTableData, setChartData, setChartAreaData} = useDataContext()
-    const { isOpen, onOpen, onClose } = useDisclosure() 
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const formatColumns = (data) => {
         const columnsArray = Object.keys(data[0])
@@ -122,8 +122,8 @@ const ReadFile = () => {
 
     }
     return (
-        <HStack justifyContent={'flex-end'} alignItems={'center'} >
-            <ButtonGroup gap={'6'} mr={'14'}>
+        <HStack justifyContent={'center'} alignItems={'center'}>
+            <ButtonGroup gap={'4'} alignItems={'center'} justifyContent={'center'} flexWrap={'wrap'}>
             <Button 
              onClick={onOpen}
              size={'lg'} 
@@ -166,7 +166,7 @@ const ReadFile = () => {
             </Box>
             <Link to="charts">
                 <Button 
-                size={'lg'} 
+                size={'lg'}  
                 boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -2px -2px 0px inset;'} 
                 p='3' 
                 rounded='md' 
