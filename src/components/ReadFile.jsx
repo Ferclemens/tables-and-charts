@@ -40,7 +40,6 @@ const ReadFile = () => {
         return columns
     }
     
-
      function numberAmountToPesoFormat(amount) {
             const formatPeso = new Intl.NumberFormat("es-AR", {
               style: "currency",
@@ -54,50 +53,49 @@ const ReadFile = () => {
     function FormatData(data) {
         const dataJsonFormated = []
         data.map((item) => {
-            const dateSendFormated = ExcelDateToJSDate(item.Fecha_envio)
-            const dateRequestFormated = ExcelDateToJSDate(item.Fecha_pedido)
-            const unitCostFormated = numberAmountToPesoFormat(item.Coste_unitario)
-            const unitPriceFormated = numberAmountToPesoFormat(item.Precio_unitario)
-            const totalCostFormated = numberAmountToPesoFormat(item.Importe_coste_total)
-            const totalSaleFormated = numberAmountToPesoFormat(item.Importe_venta_total)
+            const dateSendFormated = ExcelDateToJSDate(item["Fecha envío"])
+            const dateRequestFormated = ExcelDateToJSDate(item["Fecha pedido"])
+            const unitCostFormated = numberAmountToPesoFormat(item[" Coste unitario "])
+            const unitPriceFormated = numberAmountToPesoFormat(item[" Precio Unitario "])
+            const totalCostFormated = numberAmountToPesoFormat(item[" Importe Coste total "])
+            const totalSaleFormated = numberAmountToPesoFormat(item[" Importe venta total "])
             //Fecha_envio because understand if send product, is a sell concreted.
-            const yearSell = getYear(item.Fecha_envio)
-            const monthSell = getMonth(item.Fecha_envio)
+            const yearSell = getYear(item["Fecha envío"])
+            const monthSell = getMonth(item["Fecha envío"])
                 
             return dataJsonFormated.push({
                 ...item,
-                Coste_unitario : unitCostFormated,
-                Precio_unitario : unitPriceFormated, 
-                Importe_coste_total : totalCostFormated,
-                Importe_venta_total : totalSaleFormated,
-                Fecha_envio : dateSendFormated,
-                Fecha_pedido : dateRequestFormated,
-                Año : yearSell,
-                Mes : monthSell
+                [" Coste unitario "] : unitCostFormated,
+                [" Precio Unitario "] : unitPriceFormated, 
+                [" Importe Coste total "] : totalCostFormated,
+                [" Importe venta total "] : totalSaleFormated,
+                ["Fecha envío"] : dateSendFormated,
+                ["Fecha pedido"] : dateRequestFormated,
+                ["Año"] : yearSell,
+                ["Mes"] : monthSell
             })
 
         })
-        //console.log('DATE FORMATED Json', dataJsonFormated);
         return dataJsonFormated
     }
     function FormatDataToAreaChart(data) {
         const dataJsonFormated = []
         data.map((item) => {
-            const dateSendFormated = ExcelDateToJSDate(item.Fecha_envio)
-            const dateRequestFormated = ExcelDateToJSDate(item.Fecha_pedido)
-            const yearSell = getYear(item.Fecha_envio)
-            const monthSell = getMonth(item.Fecha_envio)
+            const dateSendFormated = ExcelDateToJSDate(item["Fecha envío"])
+            const dateRequestFormated = ExcelDateToJSDate(item["Fecha pedido"])
+            const yearSell = getYear(item["Fecha envío"])
+            const monthSell = getMonth(item["Fecha envío"])
                 
             return dataJsonFormated.push({
                 ...item,
-                Fecha_envio : dateSendFormated,
-                Fecha_pedido : dateRequestFormated,
-                Año : yearSell,
-                Mes : monthSell
+                ["Fecha envío"] : dateSendFormated,
+                ["Fecha pedido"] : dateRequestFormated,
+                ["Año"] : yearSell,
+                ["Mes"] : monthSell
             })
 
         })
-        console.log('DATE FORMATED Json PARA AREA', dataJsonFormated);
+        //console.log('DATE FORMATED Json PARA AREA', dataJsonFormated);
         return dataJsonFormated
     }
 
@@ -115,10 +113,11 @@ const ReadFile = () => {
         setTableColumns(formatColumns(dataJson))
         setTableData(FormatData(dataJson))
         const arrays = getItemsArray(FormatData(dataJson))
-        //console.log('getItemsArray()',arrays);
         setChartData(arrays)
-        const areaChartData = FormatDataToAreaChart(dataJson)
-        setChartAreaData(areaChartData)
+        const dataAreaChart = FormatDataToAreaChart(dataJson)
+        setChartAreaData(dataAreaChart)
+        console.log('DATA FORMATED',dataFormated);
+        //console.log('DATA CHART', arrays);
 
     }
     return (

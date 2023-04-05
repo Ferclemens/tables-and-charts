@@ -83,7 +83,7 @@ function AreaChart() {
     setSelect2(event.target.value)
   }
   const dataForChartAccordingToYear = (dataBase, yearSelected) => {
-    let data = dataBase.filter((item) => item.Año === yearSelected)
+    let data = dataBase.filter((item) => item["Año"] === yearSelected)
     return data
   }
   const totalSellsAccordingToMonth = (array) => {
@@ -101,41 +101,41 @@ function AreaChart() {
     let december = 0
 
     array.map((item) => {
-      if(item.Mes === "1"){
-        january += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "1"){
+        january += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "2"){
-        february += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "2"){
+        february += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "3"){
-        march += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "3"){
+        march += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "4"){
-        april += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "4"){
+        april += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "5"){
-        may += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "5"){
+        may += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "6"){
-        june += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "6"){
+        june += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "7"){
-        july += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "7"){
+        july += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "8"){
-        august += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "8"){
+        august += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "9"){
-        september += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "9"){
+        september += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "10"){
-        october += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "10"){
+        october += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "11"){
-        november += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "11"){
+        november += Math.floor(item[" Importe venta total "]) 
       }
-      if(item.Mes === "12"){
-        december += Math.floor(item.Importe_venta_total) 
+      if(item["Mes"] === "12"){
+        december += Math.floor(item[" Importe venta total "]) 
       }
     })
     let dataMonth = 
