@@ -29,8 +29,8 @@ function App() {
           <Spacer></Spacer>
           <ButtonGroup gap={'4'}>
           <Link href='https://github.com/Ferclemens' isExternal>
-          <img className='img--contact' src={'../GithubImg.png'}></img></Link>
-          <Link href='https://www.linkedin.com/in/foclemens/' isExternal><img className='img--contact' src={'../LinkedinImg.png'}/></Link>
+          <img className='img--contact' src={'./GithubImg.png'}></img></Link>
+          <Link href='https://www.linkedin.com/in/foclemens/' isExternal><img className='img--contact' src={'./LinkedinImg.png'}/></Link>
           </ButtonGroup>
           </Flex>
         </GridItem>
