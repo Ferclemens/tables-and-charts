@@ -11,7 +11,7 @@ import {
 import { Radar } from 'react-chartjs-2';
 import { Select, VStack } from '@chakra-ui/react';
 import { useDataContext } from '../context/DataContext';
-import { selectLabel } from './ProcessDataToCharts';
+import { selectLabelOption } from '../Utilities';
 
 ChartJS.register(
   RadialLinearScale,
@@ -79,8 +79,8 @@ function RadarChart() {
     ],
   };
   useEffect(() => {
-    const labelArray = chartData && select ? Object.keys(selectLabel(chartData,select)) : ['option-1','option-2', 'option-3']
-    const dataArray = chartData && select ? Object.values(selectLabel(chartData,select)) : [1, 2, 3]
+    const labelArray = chartData && select ? Object.keys(selectLabelOption(chartData,select)) : ['option-1','option-2', 'option-3']
+    const dataArray = chartData && select ? Object.values(selectLabelOption(chartData,select)) : [1, 2, 3]
     setLabelsChart(labelArray)
     setDataChart(dataArray)    
   }, [select])
