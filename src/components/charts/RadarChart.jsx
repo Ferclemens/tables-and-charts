@@ -10,8 +10,8 @@ import {
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import { Select, VStack } from '@chakra-ui/react';
-import { useDataContext } from '../context/DataContext';
-import { selectLabelOption } from '../Utilities';
+import { useDataContext } from '../../context/DataContext.jsx';
+import { selectLabelOption } from '../../Utilities';
 
 ChartJS.register(
   RadialLinearScale,

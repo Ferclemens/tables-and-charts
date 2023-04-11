@@ -1,9 +1,9 @@
 import { Box, Button, ButtonGroup, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
-import AreaChart from "./AreaChart.jsx";
-import BarChart from "./BarChart.jsx";
-import DonutChart from "./DonutChart.jsx";
-import RadarChart from "./RadarChart.jsx";
+import AreaChart from "./charts/AreaChart";
+import BarChart from "./charts/BarChart.jsx";
+import DonutChart from "./charts/DonutChart.jsx";
+import RadarChart from "./charts/RadarChart.jsx";
 import { Link } from "react-router-dom";
 
 function DisplayCharts() {
