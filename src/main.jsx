@@ -2,14 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { DataContextProvider } from './context/DataContext.jsx'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from './App'
-import DisplayCharts from './components/DisplayCharts'
+import { RouterProvider } from "react-router-dom";
+import router from './routes/router.jsx'
 
-const router = createBrowserRouter([
-  { path: "/", element: <App /> },
-  { path: "/charts", element: <DisplayCharts/> },  
-]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

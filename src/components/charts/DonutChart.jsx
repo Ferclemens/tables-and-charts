@@ -2,8 +2,8 @@ import { Select, Stack, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { useDataContext } from '../context/DataContext';
-import { selectLabelOption } from '../Utilities';
+import { useDataContext } from '../../context/DataContext.jsx';
+import { selectLabelOption } from '../../Utilities';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 export const options = {

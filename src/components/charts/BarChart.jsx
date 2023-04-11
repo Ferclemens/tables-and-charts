@@ -10,8 +10,8 @@ import {
     Legend,
   } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { useDataContext } from '../context/DataContext';
-import { countDuplicates, dataForChartAccordingToYear, totalSellsAccordingToMonth } from '../Utilities';
+import { useDataContext } from '../../context/DataContext.jsx';
+import { countDuplicates, dataForChartAccordingToYear, totalSellsAccordingToMonth } from '../../Utilities';
 
 ChartJS.register(
     CategoryScale,

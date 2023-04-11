@@ -3,7 +3,7 @@ import { getMonth } from "./getMonth";
 import { getYear } from "./getYear";
 import { numberAmountToPesoFormat } from "./numberAmountToPesoFormat";
 
-//Format data for Print Table
+//Format data for Print Table (add $ ARG and date formats)
 export function FormatDataToTable(data) {
   const dataJsonFormated = [];
   data.map((item) => {

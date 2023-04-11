@@ -12,8 +12,8 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Flex, Select, Stack, VStack } from '@chakra-ui/react';
-import { useDataContext } from '../context/DataContext';
-import { countDuplicates, dataForChartAccordingToYear, totalSellsAccordingToMonth } from '../Utilities';
+import { useDataContext } from '../../context/DataContext.jsx';
+import { countDuplicates, dataForChartAccordingToYear, totalSellsAccordingToMonth } from '../../Utilities';
 
 ChartJS.register(
   CategoryScale,
