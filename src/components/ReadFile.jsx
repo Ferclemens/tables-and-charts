@@ -83,7 +83,7 @@ const ReadFile = () => {
             <DrawerBody px={"6"} fontSize={"lg"}>
               <Text>
                 La app esta optimizada para el archivo xlsx "Listado de registro
-                de ventas de productos en Excel" (es el último ejemplo) que lo
+                de ventas de productos en Excel" que lo
                 pueden descargar desde:{" "}
                 <a
                   href="https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel"
