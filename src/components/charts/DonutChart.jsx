@@ -21,9 +21,9 @@ export const options = {
 
 function DonutChart() {
   const {chartData} = useDataContext()
-  const selectArray = chartData ? ['zona', 'producto', 'canalDeVenta', 'prioridad'] : ['Select options']
+  const selectArray = chartData ? ['zona', 'producto', 'canalDeVenta', 'prioridad'] : ['Seleccionar opción']
   const [select, setSelect] = useState('zona')
-  const [labelsChart, setLabelsChart] = useState(['option-1','option-2', 'option-3'])
+  const [labelsChart, setLabelsChart] = useState(['opción 1','opción 2', 'opción 3'])
   const [dataChart, setDataChart] = useState([1, 2, 3])  
   
   const handleChange = (event) => {
@@ -70,7 +70,7 @@ function DonutChart() {
   }
 
   useEffect(() => {
-    const labelArray = chartData && select ? Object.keys(selectLabelOption(chartData,select)) : ['option-1','option-2', 'option-3']
+    const labelArray = chartData && select ? Object.keys(selectLabelOption(chartData,select)) : ['opción 1','opción 2', 'opción 3']
     const dataArray = chartData && select ? Object.values(selectLabelOption(chartData,select)) : [1, 2, 3]
     setLabelsChart(labelArray)
     setDataChart(dataArray)    

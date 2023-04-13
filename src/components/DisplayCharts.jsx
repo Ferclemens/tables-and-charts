@@ -10,9 +10,9 @@ function DisplayCharts() {
     const direction = useBreakpointValue({base: 'column-reverse', md: 'row'})
     const titleSize = useBreakpointValue({base: '3xl', md: '4xl'})
     return (
-        <Flex flexDirection={'column'} bgGradient='linear(to-r, blackAlpha.900, yellow.900)' color={'yellow.500'} >
+        <Flex flexDirection={'column'} bgGradient='linear(to-r, blackAlpha.900, teal.900)' color={'yellow.500'} >
           <Flex mx={'14'} my={'2'} alignItems={'center'} justifyContent={'space-between'} flexDirection={direction} gap={'4'}>
-            <Text fontSize={titleSize} fontWeight={'bold'} textAlign={'center'}>Charts display and comparison</Text>
+            <Text fontSize={titleSize} fontWeight={'bold'} textAlign={'center'}>Gráficos y comparaciones</Text>
             <ButtonGroup gap={'4'} width={'120px'}>
             <a href='https://github.com/Ferclemens' target='_blank' rel="noopener noreferrer">
             <img className='img--contact' src={'./GithubImg.png'}></img></a>
@@ -33,7 +33,7 @@ function DisplayCharts() {
                     background: "yellow.500",
                     color: 'yellow.800'
                 }}
-                ><img src="./arrowLeft.png" className="img--back--tables"></img>Tables</Button></Link>
+                ><img src="../arrowLeft.png" className="img--back--tables"></img>Tablas</Button></Link>
           </Flex>
             <Flex flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                 <Box bg={'blackAlpha.800'} borderRadius={'5'} h={'100vh'} m={'2'} boxShadow={'rgba(0, 0, 0, 0.4) 4px 4px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -6px, rgba(0, 0, 0, 0.4) -4px -4px 0px inset;'}>

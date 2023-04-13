@@ -14,7 +14,7 @@ function App() {
                         "nav nav"
                         "main main"
                         "footer footer"`}
-        gridTemplateRows={'1fr 1.2fr 8fr 24px'}
+        gridTemplateRows={'1fr 1.2fr 8fr 0.8fr'}
         gridTemplateColumns={'1fr'}
         h='100vh'
         w='100vw'
@@ -23,7 +23,7 @@ function App() {
         bg='rgba(11,7,3,1)'
 
       >
-        <GridItem p={'2'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, yellow.800)' area={'header'}>
+        <GridItem p={'2'} bgGradient='linear(to-r, blackAlpha.100, blackAlpha.100, teal.900)' area={'header'}>
           <Flex mx={'6'} alignItems={'center'} flexDirection={titleDirection} gap={'2'}>
           <Text fontSize={titleSize} fontWeight={'bold'} textAlign={'center'} >Table-Chart App</Text>
           <Spacer></Spacer>
@@ -40,11 +40,11 @@ function App() {
         <GridItem p={'0.5'} area={'main'} overflow={'scroll'}>
           {tableData != null ? 
             <ShowTable/> : 
-            <Text fontSize={'3xl'} textAlign={'center'} my={'44'}>Your table render here...</Text>
+            <Text fontSize={'3xl'} textAlign={'center'} my={'10%'}>Su tabla se desplegara aquí...</Text>
           }
         </GridItem>
-        <GridItem bgGradient='linear(to-r, yellow.800,blackAlpha.100, blackAlpha.100 )' area={'footer'} position={'fixed'} bottom={0} w={'100vw'} >
-          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mb={'1'}>Fer Clemens - foclemens@gmail.com </Text>
+        <GridItem bgGradient='linear(to-r, teal.900,blackAlpha.100, blackAlpha.100 )' area={'footer'} w={'100vw'}>
+          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mt={'2'}>Fer Clemens - foclemens@gmail.com </Text>
         </GridItem>
       </Grid>
     )
