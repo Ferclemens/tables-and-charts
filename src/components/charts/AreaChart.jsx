@@ -56,24 +56,22 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'YEAR SELLS',
+      text: 'Ventas por año',
       color: 'rgba(219,161,47,1)', 
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
 
 
 function AreaChart() {
   const {cartesianChartData, chartData} = useDataContext()
-  console.log('CARTESIAN DATA', cartesianChartData);
-  const selectYear = chartData ? Object.keys(countDuplicates(chartData.año)) : ['Select year']
+  const selectYear = chartData ? Object.keys(countDuplicates(chartData.año)) : ['Seleccionar año']
   const [select1, setSelect1] = useState('año')
   const [select2, setSelect2] = useState('año')
   const [yearDataSet1, setYearDataSet1] = useState([1, 2, 3])
-  console.log('YEAR DATASET', yearDataSet1);
   const [monthDataSet1, setMonthDataSet1] = useState([1, 2, 3])
   const [yearDataSet2, setYearDataSet2] = useState([1, 2, 3])
   const [monthDataSet2, setMonthDataSet2] = useState([1, 2, 3])

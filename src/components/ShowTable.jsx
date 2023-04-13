@@ -144,9 +144,9 @@ function ShowTable() {
         >
           {'>>'}
         </Button>{' '}
-          <Text w={'30'}>Page {pageIndex + 1} of {pageOptions.length}</Text>
+          <Text w={'30'}>Página {pageIndex + 1} de {pageOptions.length}</Text>
           <span>{' | '}</span>
-          <Text>Go to page:</Text>
+          <Text>Ir a página:</Text>
           <Input size={'sm'}
             type="number"
             defaultValue={pageIndex}
@@ -165,13 +165,13 @@ function ShowTable() {
         >
           {[10, 20, 30, 40, 50, 100].map(pageSize => (
             <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+              Mostrar {pageSize}
             </option>
           ))}
         </Select>
-        <Text w={'44'}>Total registers: {preGlobalFilteredRows.length}</Text>
+        <Text w={'44'}>Registros totales: {preGlobalFilteredRows.length}</Text>
         <HStack>
-          <Text>Search:</Text>
+          <Text>Buscar:</Text>
           <Input size={'sm'} type={'text'} w={'21'} onChange={(event) => setGlobalFilter(event.target.value)} value={state.globalFilter}></Input>
         </HStack>
       </HStack>

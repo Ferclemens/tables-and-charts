@@ -52,13 +52,13 @@ ChartJS.register(
       },
       title: {
         display: true,
-        text: 'COST COMPARISON',
+        text: 'Costos por año',
         color: 'rgba(219,161,47,1)',
       },
     },
   };
   
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const labels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
 function BarChart() {
     const {cartesianChartData, chartData} = useDataContext()

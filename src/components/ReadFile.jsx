@@ -67,24 +67,24 @@ const ReadFile = () => {
           }
           p="3"
           rounded="md"
-          bg="yellow.800"
+          bg="teal.900"
           _hover={{
-            background: "yellow.500",
-            color: "yellow.800",
+            background: "yellow.600",
+            color: "yellow.400",
           }}
         >
-          <Text>Instructions</Text>
+          <Text>Instrucciones</Text>
         </Button>
         <Drawer placement={"bottom"} onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent bg="rgba(11,7,3,1)" color="yellow.500">
             <DrawerCloseButton />
-            <DrawerHeader fontSize={"2xl"}>Instrucciones de uso</DrawerHeader>
-            <DrawerBody p={"8"} fontSize={"xl"}>
+            <DrawerHeader fontSize={"xl"}>Instrucciones de uso</DrawerHeader>
+            <DrawerBody px={"6"} fontSize={"lg"}>
               <Text>
                 La app esta optimizada para el archivo xlsx "Listado de registro
                 de ventas de productos en Excel" (es el último ejemplo) que lo
-                pueden descargar desde{" "}
+                pueden descargar desde:{" "}
                 <a
                   href="https://buscarv.com/plantillas/listados-con-datos-de-ejemplo-para-descargar/#Listado_de_registro_de_ventas_de_productos_en_Excel"
                   target="_blank"
@@ -94,10 +94,10 @@ const ReadFile = () => {
                 </a>
               </Text>
               <Text>
-                Una vez descargado, lo suben desde el boton "Upload xlsx file".
+                Una vez descargado, lo suben desde el boton "Cargar archivo xlsx".
                 Se despliega la tabla en el navegador donde pueden navegar entre
                 las páginas de la tabla, o buscar datos específicos con el
-                buscador. Si van al boton "Charts" pueden ver comparaciones
+                buscador. Si van al boton "Gráficos" pueden ver comparaciones
                 gráficas de los datos cargados.
               </Text>
               <Text>
@@ -115,14 +115,14 @@ const ReadFile = () => {
           }
           p="3"
           rounded="md"
-          bg="yellow.800"
+          bg="teal.900"
           _hover={{
-            background: "yellow.500",
-            color: "yellow.800",
+            background: "yellow.600",
+            color: "yellow.400",
           }}
         >
           <label className="load--label" for="file-upload">
-            Upload xlsx File
+            Cargar archivo xlsx
           </label>
           <input
             className="load--file"
@@ -140,13 +140,13 @@ const ReadFile = () => {
             }
             p="3"
             rounded="md"
-            bg="yellow.800"
+            bg="teal.900"
             _hover={{
-              background: "yellow.500",
-              color: "yellow.800",
+              background: "yellow.600",
+              color: "yellow.400",
             }}
           >
-            Charts
+            Gráficos
           </Button>
         </Link>
       </ButtonGroup>

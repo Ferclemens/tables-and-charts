@@ -52,18 +52,18 @@ export function totalSellsAccordingToMonth (array) {
     })
     let dataMonth = 
     {
-      'January' : january,
-      'February' : february,
-      'March' : march,
-      'April' : april,
-      'May' : may,
-      'June' : june,
-      'July' : july,
-      'August' : august,
-      'September' : september,
-      'October' : october,
-      'November' : november,
-      'December' : december,
+      'Enero' : january,
+      'Febrero' : february,
+      'Marzo' : march,
+      'Abril' : april,
+      'Mayo' : may,
+      'Junio' : june,
+      'Julio' : july,
+      'Agosto' : august,
+      'Septiembre' : september,
+      'Octubre' : october,
+      'Noviembre' : november,
+      'Diciembre' : december,
     }
     return dataMonth
   }
