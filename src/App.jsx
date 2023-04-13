@@ -44,7 +44,7 @@ function App() {
           }
         </GridItem>
         <GridItem bgGradient='linear(to-r, teal.900,blackAlpha.100, blackAlpha.100 )' area={'footer'} w={'100vw'}>
-          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mt={'2'}>Fer Clemens - foclemens@gmail.com </Text>
+          <Text fontSize={'sm'} textAlign={'end'} mr={'3'} mt={'3'}>Fer Clemens - foclemens@gmail.com </Text>
         </GridItem>
       </Grid>
     )
